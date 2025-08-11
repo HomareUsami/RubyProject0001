@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @greeting %>
+
+<div>
+  <%= link_to "挨拶編集", edit_greeting_path(@greeting) %> |
+  <%= link_to "挨拶一覧に戻る", greetings_path %>
+
+  <%= button_to "挨拶削除", @greeting, method: :delete %>
+</div>

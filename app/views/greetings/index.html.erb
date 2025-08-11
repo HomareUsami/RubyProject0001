@@ -1,0 +1,49 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "あいさつデータ" %>
+
+<h1>あいさつデータ</h1>
+
+<div id="greetings">
+	<p><%= @greetings.count %>件のあいさつデータがあります。</p>
+	<p><%= @search_greetings.count %>件のあいさつデータが検索されました。</p>
+
+	<!--検索-->
+	<%= form_with url: greetings_path, method: :get,local: true do %>
+		<%= label_tag :search, "名前" %>
+		<%= text_field_tag :search, params[:search], placeholder: "名前" %>
+		<%= submit_tag "検索" %> <!--submitするだけでフォームの更新を行うだけになる。-->
+		<%= button_tag "クリア", type: "submit", name: "search", value: "" %>
+
+		<!--複数の情報を一括クリアしたい場合は以下のようにやればいい-->
+		<%#= button_tag "クリア", type: "submit",name: "search", value: "", formnovalidate: true, formaction: greetings_path, params: { email: '', date: '' } %>
+	<% end %>
+
+	<%=content_tag :table,style: "border-collapse: separate;border-spacing: 12px 2px;" do%>
+	<!--<table>-->
+		<thead>
+			<tr>
+				<th>名前</th>
+				<th>メッセージ</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!--render greetingで greetings/_greeting.html.erbに対して見に行くようになってしまうため別のファイルを見せたい場合は自前で設定するほかなさそう。省略系を書きたかったら別途関数をrubyで定義するとかがよさそう-->
+			<% @search_greetings.each do |greeting| %>
+				<%= render partial: "greetings/greeting_row",object: greeting,as: :greeting %>
+			<% end %>
+		</tbody>
+	<!--</table>-->
+	<% end %>
+	<!-- コメント時にHTML形式のコメントのみならず%の場合は#でruby自体のコードをコメントアウトしないとNG -->
+	<!--
+		<%# @greetings.each do |greeting| %>
+			<%#= render greeting %>
+			<p>
+				<%#= link_to "該当挨拶データ表示", greeting %>
+			</p>
+		<% #end %>
+	-->
+</div>
+
+<%= link_to "新規挨拶作成", new_greeting_path %>

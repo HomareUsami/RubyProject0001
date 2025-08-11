@@ -1,0 +1,20 @@
+<!--テーブル行ごとのgreetingデータを保持するための実装箇所-->
+
+<!--dom_id(greeting, :row)でrow_greeting_*でidを定義される-->
+<tr id="<%= dom_id(greeting, :row) %>">
+	<td>
+		<%= greeting.name %>
+	</td>
+	<td>
+		<%= greeting.message %>
+	</td>
+	<td>
+		<%= link_to "該当挨拶データ表示", greeting %>
+	</td>
+	<td>
+		<%= link_to "編集", edit_greeting_path(greeting) %>
+	</td>
+	<td>
+		<%= button_to "挨拶を削除", greeting, method: :delete,data: {turbo_confirm: "本当に削除しますか？"} %>
+	</td>
+</tr>

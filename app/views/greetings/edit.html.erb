@@ -1,0 +1,12 @@
+<% content_for :title, "挨拶編集" %>
+
+<h1>挨拶編集</h1>
+
+<%= render "form", greeting: @greeting %>
+
+<br>
+
+<div>
+  <%= link_to "挨拶表示", @greeting %> |
+  <%= link_to "挨拶一覧に戻る", greetings_path %>
+</div>
