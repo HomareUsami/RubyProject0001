@@ -11,10 +11,23 @@
     </div>
   <% end %>
 
+  <!--旧実装 名前手入力パターン-->
+  <% unless @current_user %>
+    <div>
+      <%= form.label :name, style: "display: block" %>
+      <%= form.text_field :name %>
+    </div>
+  <% else %>
+    <div>
+      <%= form.label :name, value: @current_user.name %>
+    </div>
+  <% end %>
+  <!--
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%#= form.label :name, style: "display: block" %>
+    <%#= form.text_field :name %>
   </div>
+  -->
 
   <div>
     <%= form.label :message, style: "display: block" %>

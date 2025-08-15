@@ -10,11 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_06_022852) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_15_022124) do
+  create_table "greeting_users", charset: "utf8mb4", force: :cascade do |t|
+    t.string "user_id", null: false
+    t.string "name", null: false
+    t.string "password_digest", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "remember_token"
+    t.index ["user_id"], name: "index_greeting_users_on_user_id", unique: true
+  end
+
   create_table "greetings", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "greeting_user_id", null: false
+    t.index ["greeting_user_id"], name: "index_greetings_on_greeting_user_id"
   end
 end

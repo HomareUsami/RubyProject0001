@@ -1,4 +1,5 @@
 class GreetingsController < ApplicationController
+  before_action :require_login # login必須
   before_action :set_greeting, only: %i[ show edit update destroy ]
 
   # GET /greetings or /greetings.json
@@ -28,7 +29,8 @@ class GreetingsController < ApplicationController
 
   # POST /greetings or /greetings.json
   def create
-    @greeting = Greeting.new(greeting_params)
+    @greeting = @current_user.greetings.build(greeting_params)
+    @greeting.name ||= @current_user.name # 自動でnameを設定しておくユーザーが後から削除されたときに履歴として残すため
 
     respond_to do |format|
       if @greeting.save
@@ -72,6 +74,28 @@ class GreetingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def greeting_params
-      params.expect(greeting: [ :name, :message ])
+      params.expect(greeting: [ :name, :message, :greeting_user ])
     end
+
+    def current_user
+      # sessionがあればsession経由でユーザーを取得
+      # なければcookie経由でユーザーを取得するがその際にremember_tokenも併せてチェックする
+      if session[:user_id]
+        @current_user ||= GreetingUser.find_by(id: session[:user_id])
+      elsif cookies.encrypted[:remember_token]
+        # tokenが一致するユーザー取得
+        remember_token_user = GreetingUser.find_by(remember_token: cookies.encrypted[:remember_token])
+        # useridも一致するよね？をさらに確認しておく
+        if remember_token_user&.id == cookies.encrypted[:user_id]
+          @current_user ||= remember_token_user
+        end
+      end
+    end
+
+  def require_login
+    # current_userが空
+    unless current_user
+      redirect_to login_path, alert: "ログインしてください"
+    end
+  end
 end

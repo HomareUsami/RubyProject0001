@@ -3,7 +3,11 @@
 <!--dom_id(greeting, :row)でrow_greeting_*でidを定義される-->
 <tr id="<%= dom_id(greeting, :row) %>">
 	<td>
-		<%= greeting.name %>
+		<% if greeting.greeting_user %>
+			<%= greeting.greeting_user.name + "[user id : #{greeting.greeting_user.user_id}]" %>
+		<% else %>
+			<%= greeting.name + "[no account]" %>
+		<% end %>
 	</td>
 	<td>
 		<%= greeting.message %>

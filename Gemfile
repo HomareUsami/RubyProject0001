@@ -44,7 +44,7 @@ gem "thruster", require: false
 gem "fiddle"
 
 # envファイルを読み込むためのgem
-gem 'dotenv'
+gem "dotenv"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -67,3 +67,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# password　暗号化用
+gem "bcrypt", "~> 3.1.7"
