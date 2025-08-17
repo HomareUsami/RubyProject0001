@@ -2,8 +2,12 @@
 RubyのRails用検証用Project
 
 ## 参考書籍
-Ruby ふりがなプログラミングを参考にしながら詰まった部分などを対処して動作確認するためのProject
+Ruby ふりがなプログラミングを参考にしながら詰まった部分などを対処して動作確認するためのProjectの新規作成と初期状態はここから。
 https://note.com/light_coyote380/n/n1884bb622863
+
+HTML&CSSとWebデザイン
+https://www.webcreatorbox.com/blog/wcb-book2 [Amazonリンク](
+https://www.amazon.co.jp/【Amazon-co-jp-限定】ほんの一手間で劇的に変わるHTML-CSSとWebデザイン実践講座-DL特典-チートシート/dp/4815606145)
 
 ## 詰まったポイント
 - MySQLの登録
@@ -16,9 +20,11 @@ https://note.com/light_coyote380/n/n1884bb622863
   - confirmでは、確認がされなかったためturbo_confirmを使用することで対処。
 - Rails独自の記法が多く慣れることに難儀。
   - ChatGPTやGoogleで調べることで調査と知識吸収。
+- GetとPostの動作基準。Formの動作。
 
 ## やれそうなことと調べている内容
-- [パスワードのハッシュ化とデータベースの登録](https://qiita.com/ryosuketter/items/805452b7e6bf9637cb57)
+- ~[パスワードのハッシュ化とデータベースの登録](https://qiita.com/ryosuketter/items/805452b7e6bf9637cb57)~
+  - 実践済み。
 - [Herokuでの公開](https://www.sejuku.net/blog/8178)
 - UIでのアニメーションなど（おそらくCSSとerb上でのHTML風記法で大体のことは網羅できそう）
 - Macの場合、Sqlite3での対処になることが多そうなため挑戦したい。
@@ -30,3 +36,4 @@ https://note.com/light_coyote380/n/n1884bb622863
 - スマホアプリ経由でのRailsのサーバーサイドとの連携による情報の取得及びデータベース登録など。
 - api　url経由の処理
 - Discord botとDB連携。（Discord Bot部分は完全独立Rubyである必要がありそうではあるが、サーバー自体との連携は可能そう。RubyでのDiscord Bot実装も可能そう。）[HerokuでのDiscord Bot](https://mssp160.netlify.app/2021-07/d1)
+- Saasの実践。
