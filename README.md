@@ -23,7 +23,7 @@ https://www.amazon.co.jp/【Amazon-co-jp-限定】ほんの一手間で劇的に
 - GetとPostの動作基準。Formの動作。
 
 ## やれそうなことと調べている内容
-- ~[パスワードのハッシュ化とデータベースの登録](https://qiita.com/ryosuketter/items/805452b7e6bf9637cb57)~
+- ~~[パスワードのハッシュ化とデータベースの登録](https://qiita.com/ryosuketter/items/805452b7e6bf9637cb57)~~
   - 実践済み。
 - [Herokuでの公開](https://www.sejuku.net/blog/8178)
 - UIでのアニメーションなど（おそらくCSSとerb上でのHTML風記法で大体のことは網羅できそう）
